@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Inquiry Organizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f2f5f9;
+        }
+        h1 {
+            color: navy;
+        }
+        input, textarea, button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background: navy;
+            color: white;
+            border: none;
+        }
+        .inquiry {
+            background: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Inquiry Organizer</h1>
+    <p>Organize customer messages in one place.</p>
+
+    <input id="customer" placeholder="Customer name">
+    <textarea id="message" placeholder="Customer inquiry"></textarea>
+    <button onclick="addInquiry()">Add Inquiry</button>
+
+    <h2>Customer Inquiries</h2>
+    <div id="inquiries"></div>
+
+    <script>
+        function addInquiry() {
+            const name = document.getElementById("customer").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !message) {
+                alert("Please enter the customer name and inquiry.");
+                return;
+            }
+
+            const item = document.createElement("div");
+            item.className = "inquiry";
+
+            const customer = document.createElement("strong");
+            customer.textContent = name;
+
+            const details = document.createElement("p");
+            details.textContent = message;
+
+            item.append(customer, details);
+            document.getElementById("inquiries").appendChild(item);
+
+            document.getElementById("customer").value = "";
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+</html>
+  
